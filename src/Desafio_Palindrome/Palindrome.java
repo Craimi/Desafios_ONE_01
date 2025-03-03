@@ -6,19 +6,15 @@ import java.util.Scanner;
 import static java.lang.Math.floor;
 
 public class Palindrome {
-    public static void main(String[] args){
-        int numberOriginal;
+    static Scanner input = new Scanner(System.in);
+
+    public void challenge() throws InterruptedException {
         int numberReversed = 0;
         boolean value = true;
 
-        try {
-            System.out.println("Indique el numero que quiera analizar: ");
-            numberOriginal = new Scanner(System.in).nextInt();
-        }
-        catch (InputMismatchException e){
-            System.out.println("El input debe ser numerico");
-            return;
-        }
+        System.out.println("[======== RETO: PALINDROME ========]");
+
+        int numberOriginal = scannerInput();
 
         int numberBackup = numberOriginal;
 
@@ -50,6 +46,22 @@ public class Palindrome {
         }
         else{
             System.out.println("El numero NO ES un palindromo");
+        }
+
+        Thread.sleep(2500);
+    }
+
+    private static int scannerInput() throws InterruptedException {
+        while (true){
+            try {
+                System.out.print("* Indique el numero que quiera analizar: ");
+                return input.nextInt();
+            }
+            catch (InputMismatchException e){
+                System.out.println("[ERROR: El input debe ser numerico]");
+                Thread.sleep(500);
+                input.next();
+            }
         }
     }
 }
